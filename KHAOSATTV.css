@@ -162,7 +162,11 @@ select:focus {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
-    display: inline-block;
+
+    /* 2 DÒNG THAY ĐỔI/BỔ SUNG ĐỂ ĐẨY NÚT SANG PHẢI */
+    display: block;
+    margin-left: auto;
+
     margin-top: 10px;
 }
 

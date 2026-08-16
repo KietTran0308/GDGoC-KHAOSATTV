@@ -104,11 +104,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 // 3. Đổi Tiêu đề thành "Gửi thành công!" và đổi màu xanh lá
                 headerTitle.textContent = "Gửi thành công!";
                 headerTitle.style.color = "#34A853";
-                headerTitle.style.textAlign = "center";
+                headerTitle.style.textAlign = "left";
 
                 // 4. Thay đổi nội dung đoạn văn <p> theo đúng ý bạn và căn giữa
                 headerDesc.innerHTML = "Cảm ơn bạn đã dành thời gian hoàn thành khảo sát.<br><br>Dù là lựa chọn nào đi chăng nữa, ban chủ nhiệm GDGoC SGU xin chân thành cảm ơn và chúc bạn sẽ thành công trên con đường học tập và những lựa chọn sắp tới.";
-                headerDesc.style.textAlign = "center";
+                headerDesc.style.textAlign = "left  ";
                 headerDesc.style.fontSize = "16px";
 
                 // 5. Cuộn trang lên trên cùng để người dùng dễ đọc lời cảm ơn
