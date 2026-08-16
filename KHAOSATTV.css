@@ -34,7 +34,7 @@ body {
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 20px 30px; /* Tăng padding 2 bên cho thoáng */
+    padding: 20px 30px;
     box-sizing: border-box;
     border-top: 8px solid #4285F4;
 }
@@ -46,7 +46,7 @@ body {
 }
 
 .form-header h1 {
-    font-size: 32px; /* Chỉnh nhỏ lại một chút cho cân đối trên điện thoại */
+    font-size: 32px;
     margin: 0 0 15px 0;
 }
 
@@ -59,7 +59,7 @@ body {
 
 /* Các nhóm nhập liệu */
 .form-group {
-    margin-bottom: 30px; /* Tăng khoảng cách giữa các câu hỏi */
+    margin-bottom: 30px;
 }
 
 /* Đồng bộ tiêu đề các câu hỏi (thẻ h2 và label) */
@@ -78,7 +78,7 @@ body {
     color: red;
 }
 
-.list-button-ban{
+.list-button-ban {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -168,4 +168,24 @@ select:focus {
 
 .submit-btn:hover {
     background-color: #3367D6;
+}
+
+/* =======================================================
+   RESPONSIVE THIẾT BỊ DI ĐỘNG (Điện thoại, Tablet nhỏ)
+   ======================================================= */
+@media screen and (max-width: 768px) {
+    .banner, 
+    .formKS {
+        width: 95%; /* Mở rộng form ra sát viền màn hình trên điện thoại thay vì 70% */
+        padding: 20px 15px; /* Giảm khoảng cách padding hai bên để có thêm không gian hiển thị text */
+    }
+
+    .form-header h1 {
+        font-size: 26px; /* Thu nhỏ tiêu đề chính một chút để không bị rớt dòng quá nhiều */
+    }
+
+    .submit-btn {
+        width: 100%; /* Đưa nút submit tràn viền trên điện thoại để dễ bấm hơn */
+        text-align: center;
+    }
 }
