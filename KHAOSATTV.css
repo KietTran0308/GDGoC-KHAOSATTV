@@ -1,0 +1,171 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #d7eaf4; 
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 50px;
+}
+
+.banner {
+    width: 70%;
+    max-width: 800px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.formKS {
+    width: 70%;
+    max-width: 800px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px 30px; /* Tăng padding 2 bên cho thoáng */
+    box-sizing: border-box;
+    border-top: 8px solid #4285F4;
+}
+
+.form-header {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+}
+
+.form-header h1 {
+    font-size: 32px; /* Chỉnh nhỏ lại một chút cho cân đối trên điện thoại */
+    margin: 0 0 15px 0;
+}
+
+.form-header p {
+    text-align: justify;
+    color: #444;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Các nhóm nhập liệu */
+.form-group {
+    margin-bottom: 30px; /* Tăng khoảng cách giữa các câu hỏi */
+}
+
+/* Đồng bộ tiêu đề các câu hỏi (thẻ h2 và label) */
+.form-group h2, 
+.form-group label.question-title {
+    display: block;
+    font-weight: 500;
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 16px;
+}
+
+/* Dấu sao đỏ cho các trường bắt buộc */
+.required::after {
+    content: " *";
+    color: red;
+}
+
+.list-button-ban{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ban-btn {
+    background-color: #f1f3f4;
+    color: #333;
+    border: 1px solid #dadce0;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+}
+
+.ban-btn:hover {
+    background-color: #e8eaed;
+}
+
+.ban-btn.active {
+    background-color: #e8efed;
+    color: #1a73e8;
+    border: 2px solid #1a73e8;
+    font-weight: 500;
+}
+
+/* Đồng bộ input, textarea và select */
+input[type="text"], 
+textarea, 
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+    background-color: #fff;
+}
+
+input[type="text"]:focus, 
+textarea:focus, 
+select:focus {
+    border-color: #4285F4;
+    outline: none;
+}
+
+/* Nút chọn (Radio Buttons) */
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.radio-group label {
+    font-weight: 400;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.radio-group input[type="radio"] {
+    margin-right: 10px;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+/* Nút Submit */
+.submit-btn {
+    background-color: #4285F4;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.submit-btn:hover {
+    background-color: #3367D6;
+}
