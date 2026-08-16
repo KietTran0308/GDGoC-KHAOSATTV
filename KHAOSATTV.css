@@ -176,7 +176,7 @@ select:focus {
 @media screen and (max-width: 768px) {
     .banner, 
     .formKS {
-        width: 95%; /* Mở rộng form ra sát viền màn hình trên điện thoại thay vì 70% */
+        width: 90%; /* Mở rộng form ra sát viền màn hình trên điện thoại thay vì 70% */
         padding: 20px 15px; /* Giảm khoảng cách padding hai bên để có thêm không gian hiển thị text */
     }
 
