@@ -163,11 +163,11 @@ select:focus {
     cursor: pointer;
     transition: background-color 0.3s;
 
-    /* 2 DÒNG THAY ĐỔI/BỔ SUNG ĐỂ ĐẨY NÚT SANG PHẢI */
     display: block;
     margin-left: auto;
-
     margin-top: 10px;
+
+    border-top: 1px solid #eeeeee;
 }
 
 .submit-btn:hover {
