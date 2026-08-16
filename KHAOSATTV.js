@@ -1,28 +1,27 @@
 const membersData = {
-    "Ban 1": [
-        "Đặng Minh Tân", "Hoàng Phú Thịnh", "Hồ Hoàng Long", "Huỳnh Tấn Phi Hùng", "Ngô Đăng Hiến", 
-        "Nguyễn Anh Thư", "Nguyễn Hoàng Anh", "Nguyễn Minh Triết", "Trần Hòa Xuân Thu", "Trần Phương Thảo", 
+    "Ban Education & Development": [
+        "Đặng Minh Tân", "Hoàng Phú Thịnh", "Hồ Hoàng Long", "Huỳnh Tấn Phi Hùng", "Ngô Đăng Hiến",
+        "Nguyễn Anh Thư", "Nguyễn Hoàng Anh", "Nguyễn Minh Triết", "Trần Hòa Xuân Thu", "Trần Phương Thảo",
         "Võ Minh Sang"
     ],
-    "Ban 2": [
-        "Nguyễn Chí Thành", "Nguyễn Đức Phát", "Nguyễn Ngọc Đoan Trang", "Trần Tùng Dương", "Trương Quốc Thái", 
+    "Ban Community & Event": [
+        "Nguyễn Chí Thành", "Nguyễn Đức Phát", "Nguyễn Ngọc Đoan Trang", "Trần Tùng Dương", "Trương Quốc Thái",
     ],
-    "Ban 3": [
+    "Ban Media & Creative": [
         "Huỳnh Hoàng Phong", "Ngô Trung Toàn", "Nguyễn Lê Bảo Yến Vy", "Nguyễn Ngọc Tú", "Trần Minh Đăng", "Vũ Đình Phi"
     ],
-    "Ban 4": [
-        "Đàm Thị Ngọc Châu", "Trần Giang Tuấn Kiệt" 
+    "Ban People & Operation": [
+        "Đàm Thị Ngọc Châu", "Trần Giang Tuấn Kiệt"
     ]
 };
 
-document.addEventListener("DOMContentLoaded", function() {
-    // ---- 1. Logic chọn Ban và Tên ----
+document.addEventListener("DOMContentLoaded", function () {
     const banButtons = document.querySelectorAll(".ban-btn");
     const nameSelect = document.getElementById("name");
     const selectedBanInput = document.getElementById("selectedBan");
 
     banButtons.forEach(button => {
-        button.addEventListener("click", function() {
+        button.addEventListener("click", function () {
             banButtons.forEach(btn => btn.classList.remove("active"));
             this.classList.add("active");
 
@@ -43,35 +42,77 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // ---- 2. Logic ẩn/hiện Form và xử lý Required ----
     const decisionRadios = document.querySelectorAll('input[name="decision"]');
     const continueSection = document.getElementById("continueSection");
     const leaveSection = document.getElementById("leaveSection");
 
-    // Lấy các input/textarea bên trong các vùng để bật/tắt tính năng bắt buộc
     const continueInputs = continueSection.querySelectorAll('input, textarea');
     const leaveInputs = leaveSection.querySelectorAll('input, textarea');
 
     decisionRadios.forEach(radio => {
-        radio.addEventListener("change", function() {
-            if (this.value === "continue") {
+        radio.addEventListener("change", function () {
+            if (this.value === "Continue") {
                 continueSection.style.display = "block";
                 leaveSection.style.display = "none";
-                
-                // Bật required cho phần "Tiếp tục"
+
                 continueInputs.forEach(input => input.setAttribute("required", "true"));
-                // Tắt required cho phần "Rời đi" để không bị lỗi lúc submit form
                 leaveInputs.forEach(input => input.removeAttribute("required"));
-                
-            } else if (this.value === "leave") {
+
+            } else if (this.value === "Leave") {
                 leaveSection.style.display = "block";
                 continueSection.style.display = "none";
-                
-                // Bật required cho phần "Rời đi"
+
                 leaveInputs.forEach(input => input.setAttribute("required", "true"));
-                // Tắt required cho phần "Tiếp tục"
                 continueInputs.forEach(input => input.removeAttribute("required"));
             }
         });
+    });
+
+    // ---- 3. PHẦN GỬI DỮ LIỆU (Đã được đưa vào trong DOMContentLoaded) ----
+    const form = document.getElementById("gdgSurveyForm");
+    const submitBtn = document.querySelector(".submit-btn");
+
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxMiEHrVcuRwSIQWoFamr-iQdDa5W090mIl5G635Y9WH_PDHzw6hB-UheHMC2AzXuwS1Q/exec';
+
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        submitBtn.textContent = "Đang xử lý...";
+        submitBtn.disabled = true;
+
+        const formData = new FormData(form);
+
+        // Đảm bảo không có cột nào bị bỏ trống trên Google Sheets
+        const allFields = ['selectedBan', 'name', 'improvement', 'decision', 'continue_plan', 'support', 'leave_reason', 'feedback'];
+        allFields.forEach(field => {
+            if (!formData.has(field) || formData.get(field).trim() === "") {
+                formData.delete(field); 
+                formData.append(field, "Không có");
+            }
+        });
+
+        // Gửi dữ liệu qua Google Sheets
+        fetch(scriptURL, { method: 'POST', body: formData })
+            .then(response => {
+                alert("Cảm ơn bạn! Khảo sát của bạn đã được gửi thành công.");
+                
+                // Trả form về trạng thái ban đầu
+                form.reset();
+
+                // Các biến này giờ đây đã có thể được gọi mà không gây lỗi
+                continueSection.style.display = "none";
+                leaveSection.style.display = "none";
+                banButtons.forEach(btn => btn.classList.remove("active"));
+                nameSelect.innerHTML = '<option value="">-- Vui lòng chọn Ban trước --</option>';
+
+                submitBtn.textContent = "Gửi khảo sát";
+                submitBtn.disabled = false;
+            })
+            .catch(error => {
+                console.error('Lỗi:', error.message);
+                alert("Đã xảy ra lỗi trong quá trình gửi, vui lòng thử lại sau!");
+                submitBtn.textContent = "Gửi khảo sát";
+                submitBtn.disabled = false;
+            });
     });
 });
