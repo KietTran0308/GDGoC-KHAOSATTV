@@ -151,7 +151,12 @@ select:focus {
     cursor: pointer;
 }
 
-/* Nút Submit */
+.buttonS {
+    border-top: 1px solid #eeeeee;
+    padding-top: 20px; /* Thêm dòng này để đẩy nút ra xa đường kẻ */
+    margin-top: 10px;
+}
+
 .submit-btn {
     background-color: #4285F4;
     color: white;
@@ -165,9 +170,6 @@ select:focus {
 
     display: block;
     margin-left: auto;
-    margin-top: 10px;
-
-    border-top: 1px solid #eeeeee;
 }
 
 .submit-btn:hover {

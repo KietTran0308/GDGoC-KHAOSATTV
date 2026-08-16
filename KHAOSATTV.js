@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 // 4. Thay đổi nội dung đoạn văn <p> theo đúng ý bạn và căn giữa
                 headerDesc.innerHTML = "Cảm ơn bạn đã dành thời gian hoàn thành khảo sát.<br><br>Dù là lựa chọn nào đi chăng nữa, ban chủ nhiệm GDGoC SGU xin chân thành cảm ơn và chúc bạn sẽ thành công trên con đường học tập và những lựa chọn sắp tới.";
-                headerDesc.style.textAlign = "left  ";
+                headerDesc.style.textAlign = "left";
                 headerDesc.style.fontSize = "16px";
 
                 // 5. Cuộn trang lên trên cùng để người dùng dễ đọc lời cảm ơn
