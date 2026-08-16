@@ -181,7 +181,7 @@ select:focus {
     }
 
     .form-header h1 {
-        font-size: 26px; /* Thu nhỏ tiêu đề chính một chút để không bị rớt dòng quá nhiều */
+        font-size: 30px; /* Thu nhỏ tiêu đề chính một chút để không bị rớt dòng quá nhiều */
     }
 
     .submit-btn {
