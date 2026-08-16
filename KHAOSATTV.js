@@ -100,10 +100,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 successMessage.style.display = "block";
 
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-
-                document.getElementById("reloadBtn").addEventListener("click", function() {
-                    location.reload();
-                });
             })
             .catch(error => {
                 console.error('Lỗi:', error.message);
