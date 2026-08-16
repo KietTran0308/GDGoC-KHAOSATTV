@@ -170,6 +170,15 @@ select:focus {
     background-color: #3367D6;
 }
 
+.footer {
+    margin-top: 25px;
+    font-size: 13px;
+    color: #5f6368; /* Màu xám nhạt chuẩn phong cách Google */
+    text-align: center;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
 /* =======================================================
    RESPONSIVE THIẾT BỊ DI ĐỘNG (Điện thoại, Tablet nhỏ)
    ======================================================= */
