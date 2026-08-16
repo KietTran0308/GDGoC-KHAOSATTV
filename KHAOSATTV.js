@@ -94,19 +94,16 @@ document.addEventListener("DOMContentLoaded", function () {
         // Gửi dữ liệu qua Google Sheets
         fetch(scriptURL, { method: 'POST', body: formData })
             .then(response => {
-                alert("Cảm ơn bạn! Khảo sát của bạn đã được gửi thành công.");
-                
-                // Trả form về trạng thái ban đầu
-                form.reset();
+                form.style.display = "none";
 
-                // Các biến này giờ đây đã có thể được gọi mà không gây lỗi
-                continueSection.style.display = "none";
-                leaveSection.style.display = "none";
-                banButtons.forEach(btn => btn.classList.remove("active"));
-                nameSelect.innerHTML = '<option value="">-- Vui lòng chọn Ban trước --</option>';
+                const successMessage = document.getElementById("successMessage");
+                successMessage.style.display = "block";
 
-                submitBtn.textContent = "Gửi khảo sát";
-                submitBtn.disabled = false;
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+
+                document.getElementById("reloadBtn").addEventListener("click", function() {
+                    location.reload();
+                });
             })
             .catch(error => {
                 console.error('Lỗi:', error.message);
