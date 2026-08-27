@@ -1,16 +1,16 @@
 const membersData = {
-    "Ban Education & Development": [
+    "Ban Technology": [
         "Đặng Minh Tân", "Hoàng Phú Thịnh", "Hồ Hoàng Long", "Huỳnh Tấn Phi Hùng", "Ngô Đăng Hiến",
         "Nguyễn Anh Thư", "Nguyễn Hoàng Anh", "Nguyễn Minh Triết", "Trần Hòa Xuân Thu", "Trần Phương Thảo",
         "Võ Minh Sang"
     ],
-    "Ban Community & Event": [
+    "Ban Community Partnerships": [
         "Nguyễn Chí Thành", "Nguyễn Đức Phát", "Nguyễn Ngọc Đoan Trang", "Trần Tùng Dương", "Trương Quốc Thái",
     ],
-    "Ban Media & Creative": [
+    "Ban Marketing & Communications": [
         "Huỳnh Hoàng Phong", "Ngô Trung Toàn", "Nguyễn Lê Bảo Yến Vy", "Nguyễn Ngọc Tú", "Trần Minh Đăng", "Vũ Đình Phi"
     ],
-    "Ban People & Operation": [
+    "Ban People Operations": [
         "Đàm Thị Ngọc Châu", "Trần Giang Tuấn Kiệt"
     ]
 };
@@ -82,8 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const formData = new FormData(form);
 
-        // Đảm bảo không có cột nào bị bỏ trống trên Google Sheets
-        const allFields = ['selectedBan', 'name', 'improvement', 'decision', 'continue_plan', 'support', 'leave_reason', 'feedback'];
+        const allFields = ['selectedBan', 'name', 'improvement', 'decision', 'support', 'leave_reason', 'feedback'];
         allFields.forEach(field => {
             if (!formData.has(field) || formData.get(field).trim() === "") {
                 formData.delete(field); 
