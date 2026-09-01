@@ -28,7 +28,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const selectedBan = this.getAttribute("data-ban");
             selectedBanInput.value = selectedBan;
-
             nameSelect.classList.remove('has-data');
             nameSelect.innerHTML = '<option value="">-- Vui lòng chọn tên của bạn --</option>';
             const members = membersData[selectedBan];
@@ -114,7 +113,9 @@ document.addEventListener("DOMContentLoaded", function () {
         // Gửi dữ liệu qua Google Sheets
         fetch(scriptURL, { method: 'POST', body: formData })
             .then(response => {
-                // 1. Ẩn toàn bộ form nhập liệu
+                const userName = document.getElementById("name").value;
+                const userBan = document.getElementById("selectedBan").value;
+
                 form.style.display = "none";
 
                 // 2. Tìm đến phần Tiêu đề và Đoạn văn giới thiệu ban đầu
@@ -123,13 +124,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 // 3. Đổi Tiêu đề thành "Gửi thành công!" và đổi màu xanh lá
                 headerTitle.textContent = "Gửi thành công!";
-                headerTitle.style.color = "#34A853";
+                headerTitle.style.color = "#1a73e8";
                 headerTitle.style.textAlign = "left";
 
-                // 4. Thay đổi nội dung đoạn văn <p> theo đúng ý bạn và căn giữa
-                headerDesc.innerHTML = "Cảm ơn bạn đã dành thời gian hoàn thành khảo sát.<br><br>Dù là lựa chọn nào đi chăng nữa, ban chủ nhiệm GDGoC SGU xin chân thành cảm ơn và chúc bạn sẽ thành công trên con đường học tập và những lựa chọn sắp tới.";
+                // 4. Thay đổi nội dung đoạn văn <p> và chèn Tên + Ban vào
+                headerDesc.innerHTML = 'Ban chủ nhiệm Google Developer Group on Campus - Saigon xin trân trọng cảm ơn bạn <b>${userName}</b> (${userBan}) đã dành thời gian hoàn thành khảo sát.<br><br>Dù là lựa chọn nào đi chăng nữa, ban chủ nhiệm GDGoC SGU xin chân thành cảm ơn và chúc bạn sẽ thành công trên con đường học tập và những lựa chọn sắp tới.';
                 headerDesc.style.textAlign = "left";
                 headerDesc.style.fontSize = "16px";
+                headerDesc.style.lineHeight = "1.8"; /* Tuỳ chọn: Tăng khoảng cách dòng cho dễ đọc */
 
                 // 5. Cuộn trang lên trên cùng để người dùng dễ đọc lời cảm ơn
                 window.scrollTo({ top: 0, behavior: 'smooth' });
