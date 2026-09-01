@@ -123,14 +123,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 headerTitle.textContent = "Gửi thành công!";
                 headerTitle.style.color = "#1a73e8";
-                headerTitle.style.textAlign = "center";
+                headerTitle.style.textAlign = "left";
                 headerDesc.innerHTML = `
-                    <div style="text-align: center; font-size: 16px; line-height: 1.6;">
+                    <div style="text-align: left; font-size: 16px; line-height: 1.6;">
                         Ban chủ nhiệm Google Developer Group on Campus - Saigon xin trân trọng cảm ơn bạn:
                         <br><br>
-                        <span style="font-size: 24px; color: #EA4335; font-weight: bold; text-transform: uppercase;">${userName}</span>
+                        <span style="text-align: center; font-size: 24px; color: #EA4335; font-weight: bold; text-transform: uppercase;">${userName}</span>
                         <br>
-                        <span style="font-size: 18px; color: #4285F4; font-weight: 500;">(${userBan})</span>
+                        <span style="text-align: center; font-size: 18px; color: #4285F4; font-weight: 500;">(${userBan})</span>
                         <br><br>
                         đã dành thời gian hoàn thành khảo sát.
                         <br><br>
