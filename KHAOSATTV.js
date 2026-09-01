@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 headerTitle.style.color = "#1a73e8";
                 headerTitle.style.textAlign = "left";
                 headerDesc.innerHTML = `
-                    <div style="text-align: left; font-size: 16px; line-height: 1.6;">
+                    <div style="font-size: 16px; line-height: 1.6;">
                         Ban chủ nhiệm Google Developer Group on Campus - Saigon xin trân trọng cảm ơn bạn:
                         <br><br>
                         <span style="text-align: center; font-size: 24px; color: #EA4335; font-weight: bold; text-transform: uppercase;">${userName}</span>
