@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 headerTitle.textContent = "Gửi thành công!";
                 headerTitle.style.color = "#1a73e8";
-                headerTitle.style.textAlign = "left";
+                headerTitle.style.textAlign = "center";
                 headerDesc.innerHTML = `
                     <div style="text-align: center; font-size: 16px; line-height: 1.6;">
                         Ban chủ nhiệm Google Developer Group on Campus - Saigon xin trân trọng cảm ơn bạn:
