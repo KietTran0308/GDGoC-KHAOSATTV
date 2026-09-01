@@ -110,7 +110,7 @@ body {
 /* Đồng bộ input, textarea và select */
 input[type="text"], textarea, select {
     width: 100%;
-    padding: 12px;
+    padding: 12px 25px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 15px;
@@ -118,6 +118,20 @@ input[type="text"], textarea, select {
     box-sizing: border-box;
     transition: border-color 0.3s;
     background-color: #fff;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none; /* Ẩn mũi tên mặc định của hệ thống */
+
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23555'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+
+    background-position: right 10px center;
+    background-size: 30px 30px;
+    padding-right: 48px;
+    cursor: pointer;
 }
 
 input[type="text"]:focus, textarea:focus,
