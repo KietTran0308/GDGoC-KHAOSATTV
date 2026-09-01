@@ -141,6 +141,10 @@ input[type="text"].has-data, textarea.has-data, select.has-data {
     font-weight: 500;
 }
 
+select.has-data{
+    color: #1a73e8;
+}
+
 input[type="text"].has-data:focus, textarea.has-data:focus, select.has-data:focus {
     border-color: #4285F4;
 }
