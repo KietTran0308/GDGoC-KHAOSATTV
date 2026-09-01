@@ -147,7 +147,6 @@ select:focus {
 /* Nút chọn (Radio Buttons) */
 .radio-group {
     display: flex;
-    flex-direction: column;
     gap: 10px;
 }
 
