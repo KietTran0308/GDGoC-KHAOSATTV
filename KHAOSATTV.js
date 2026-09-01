@@ -123,10 +123,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 headerTitle.textContent = "Gửi thành công!";
                 headerTitle.style.color = "#1a73e8";
-                headerTitle.style.textAlign = "left";
+                headerTitle.style.textAlign = "center";
                 headerDesc.innerHTML = `
                     <div style="font-size: 16px; line-height: 1.6;">
-                        Ban chủ nhiệm Google Developer Group on Campus - Saigon xin trân trọng cảm ơn bạn:
+                        Ban chủ nhiệm Google Developer Group on Campus - Saigon xin trân trọng cảm ơn bạn
                         <br><br>
                         <span style="text-align: center; font-size: 24px; color: #EA4335; font-weight: bold; text-transform: uppercase;">${userName}</span>
                         <br>
@@ -134,9 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         <br><br>
                         đã dành thời gian hoàn thành khảo sát.
                         <br><br>
-                        Dù là lựa chọn nào đi chăng nữa, ban chủ nhiệm GDGoC SGU xin chân thành cảm ơn và chúc bạn sẽ thành công trên con đường học tập và những lựa chọn sắp tới ❤️,
-                        <br>
-                        Google Developer Groups on Campus • Saigon University.
+                        Dù là lựa chọn nào đi chăng nữa, ban chủ nhiệm GDGoC SGU xin chân thành cảm ơn và chúc bạn sẽ thành công trên con đường học tập và những lựa chọn sắp tới ❤️.
                     </div>
                 `;
 
