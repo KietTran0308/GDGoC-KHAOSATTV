@@ -71,21 +71,6 @@ body {
     font-size: 16px;
 }
 
-.name-flex {
-    display: flex;
-    align-items: center; /* Căn giữa h2 và select theo chiều dọc */
-    gap: 15px; /* Tạo khoảng cách giữa chữ và ô chọn */
-}
-
-.name-flex h2 {
-    margin-bottom: 0; /* Xóa margin-bottom mặc định của thẻ h2 trong form-group */
-    white-space: nowrap; /* Đảm bảo câu hỏi không bị rớt dòng */
-}
-
-.name-flex select {
-    flex: 1; /* Cho phép ô select chiếm toàn bộ chiều ngang còn lại */
-}
-
 /* Dấu sao đỏ cho các trường bắt buộc */
 .required::after {
     content: " *";
@@ -116,16 +101,14 @@ body {
 }
 
 .ban-btn.active {
-    background-color: #e8efed;
+    background-color: #ffffff;
     color: #1a73e8;
     border: 2px solid #1a73e8;
     font-weight: 500;
 }
 
 /* Đồng bộ input, textarea và select */
-input[type="text"], 
-textarea, 
-select {
+input[type="text"], textarea, select {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -137,18 +120,25 @@ select {
     background-color: #fff;
 }
 
-input[type="text"]:focus, 
-textarea:focus, 
+input[type="text"]:focus, textarea:focus,
 select:focus {
     border-color: #4285F4;
     outline: none;
 }
 
+input[type="text"].has-data, textarea.has-data, select.has-data {
+    border: 2px solid #1a73e8;
+    font-weight: 500; /* Tuỳ chọn: Làm chữ đậm lên một chút */
+}
+
+input[type="text"].has-data:focus, textarea.has-data:focus, select.has-data:focus {
+    border-color: #4285F4;
+}
+
 /* Nút chọn (Radio Buttons) */
 .radio-group {
-    display: flex;
-    flex: 1 1 auto;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 .radio-group label {

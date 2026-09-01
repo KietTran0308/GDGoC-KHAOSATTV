@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const banButtons = document.querySelectorAll(".ban-btn");
     const nameSelect = document.getElementById("name");
     const selectedBanInput = document.getElementById("selectedBan");
+    const inputFields = document.querySelectorAll('input[type="text"], textarea, select');
 
     banButtons.forEach(button => {
         button.addEventListener("click", function () {
@@ -28,8 +29,8 @@ document.addEventListener("DOMContentLoaded", function () {
             const selectedBan = this.getAttribute("data-ban");
             selectedBanInput.value = selectedBan;
 
+            nameSelect.classList.remove('has-data');
             nameSelect.innerHTML = '<option value="">-- Vui lòng chọn tên của bạn --</option>';
-
             const members = membersData[selectedBan];
             if (members) {
                 members.forEach(name => {
@@ -38,6 +39,26 @@ document.addEventListener("DOMContentLoaded", function () {
                     option.textContent = name;
                     nameSelect.appendChild(option);
                 });
+            }
+        });
+    });
+
+    inputFields.forEach(field => {
+        // Lắng nghe sự kiện 'input' (khi gõ chữ) và 'change' (khi chọn select)
+        field.addEventListener('input', function() {
+            if (this.value.trim() !== "") {
+                this.classList.add('has-data'); // Thêm class khi có dữ liệu
+            } else {
+                this.classList.remove('has-data'); // Xóa class khi trống
+            }
+        });
+
+        // Bắt thêm sự kiện 'change' đặc biệt cho thẻ select
+        field.addEventListener('change', function() {
+             if (this.value.trim() !== "") {
+                this.classList.add('has-data');
+            } else {
+                this.classList.remove('has-data');
             }
         });
     });
