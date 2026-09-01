@@ -118,7 +118,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 form.style.display = "none";
 
-                // 2. Tìm đến phần Tiêu đề và Đoạn văn giới thiệu ban đầu
                 const headerTitle = document.querySelector(".form-header h1");
                 const headerDesc = document.querySelector(".form-header p");
 
@@ -128,7 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 headerTitle.style.textAlign = "left";
 
                 // 4. Thay đổi nội dung đoạn văn <p> và chèn Tên + Ban vào
-                headerDesc.innerHTML = 'Ban chủ nhiệm Google Developer Group on Campus - Saigon xin trân trọng cảm ơn bạn <b>${userName}</b> (${userBan}) đã dành thời gian hoàn thành khảo sát.<br><br>Dù là lựa chọn nào đi chăng nữa, ban chủ nhiệm GDGoC SGU xin chân thành cảm ơn và chúc bạn sẽ thành công trên con đường học tập và những lựa chọn sắp tới.';
+                headerDesc.innerHTML = `Ban chủ nhiệm Google Developer Group on Campus - Saigon xin trân trọng cảm ơn bạn <b>${userName}</b> (${userBan}) đã dành thời gian hoàn thành khảo sát.<br><br>Dù là lựa chọn nào đi chăng nữa, ban chủ nhiệm GDGoC SGU xin chân thành cảm ơn và chúc bạn sẽ thành công trên con đường học tập và những lựa chọn sắp tới.`;
                 headerDesc.style.textAlign = "left";
                 headerDesc.style.fontSize = "16px";
                 headerDesc.style.lineHeight = "1.8"; /* Tuỳ chọn: Tăng khoảng cách dòng cho dễ đọc */
