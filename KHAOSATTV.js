@@ -66,24 +66,23 @@ document.addEventListener("DOMContentLoaded", function () {
     const continueSection = document.getElementById("continueSection");
     const leaveSection = document.getElementById("leaveSection");
 
-    const continueInputs = continueSection.querySelectorAll('input, textarea');
-    const leaveInputs = leaveSection.querySelectorAll('input, textarea');
-
     decisionRadios.forEach(radio => {
         radio.addEventListener("change", function () {
             if (this.value === "Continue") {
                 continueSection.style.display = "block";
                 leaveSection.style.display = "none";
 
-                continueInputs.forEach(input => input.setAttribute("required", "true"));
-                leaveInputs.forEach(input => input.removeAttribute("required"));
+                // CHỈ bắt buộc chọn nút radio (câu hỏi tham gia đợt tuyển), BỎ QUA ô textarea
+                continueSection.querySelectorAll('input[type="radio"]').forEach(input => input.setAttribute("required", "true"));
+                leaveSection.querySelectorAll('textarea').forEach(input => input.removeAttribute("required"));
 
             } else if (this.value === "Leave") {
                 leaveSection.style.display = "block";
                 continueSection.style.display = "none";
 
-                leaveInputs.forEach(input => input.setAttribute("required", "true"));
-                continueInputs.forEach(input => input.removeAttribute("required"));
+                // Bắt buộc nhập lý do rời đi
+                leaveSection.querySelectorAll('textarea').forEach(input => input.setAttribute("required", "true"));
+                continueSection.querySelectorAll('input[type="radio"]').forEach(input => input.removeAttribute("required"));
             }
         });
     });
@@ -96,6 +95,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     form.addEventListener("submit", function (e) {
         e.preventDefault();
+
+        const nameSelectElement = document.getElementById("name");
+        const userName = nameSelectElement.options[nameSelectElement.selectedIndex].text;
+        const userBan = document.getElementById("selectedBan").value;
 
         submitBtn.textContent = "Đang xử lý...";
         submitBtn.disabled = true;
@@ -113,26 +116,28 @@ document.addEventListener("DOMContentLoaded", function () {
         // Gửi dữ liệu qua Google Sheets
         fetch(scriptURL, { method: 'POST', body: formData })
             .then(response => {
-                const userName = document.getElementById("name").value;
-                const userBan = document.getElementById("selectedBan").value;
-
                 form.style.display = "none";
 
                 const headerTitle = document.querySelector(".form-header h1");
                 const headerDesc = document.querySelector(".form-header p");
 
-                // 3. Đổi Tiêu đề thành "Gửi thành công!" và đổi màu xanh lá
                 headerTitle.textContent = "Gửi thành công!";
                 headerTitle.style.color = "#1a73e8";
                 headerTitle.style.textAlign = "left";
+                headerDesc.innerHTML = `
+                    <div style="text-align: center; font-size: 16px; line-height: 1.6;">
+                        Ban chủ nhiệm Google Developer Group on Campus - Saigon xin trân trọng cảm ơn bạn:
+                        <br><br>
+                        <span style="font-size: 24px; color: #EA4335; font-weight: bold; text-transform: uppercase;">${userName}</span>
+                        <br>
+                        <span style="font-size: 18px; color: #4285F4; font-weight: 500;">(${userBan})</span>
+                        <br><br>
+                        đã dành thời gian hoàn thành khảo sát.
+                        <br><br>
+                        Dù là lựa chọn nào đi chăng nữa, ban chủ nhiệm GDGoC SGU xin chân thành cảm ơn và chúc bạn sẽ thành công trên con đường học tập và những lựa chọn sắp tới ❤️.
+                    </div>
+                `;
 
-                // 4. Thay đổi nội dung đoạn văn <p> và chèn Tên + Ban vào
-                headerDesc.innerHTML = `Ban chủ nhiệm Google Developer Group on Campus - Saigon xin trân trọng cảm ơn bạn <b>${userName}</b> (${userBan}) đã dành thời gian hoàn thành khảo sát.<br><br>Dù là lựa chọn nào đi chăng nữa, ban chủ nhiệm GDGoC SGU xin chân thành cảm ơn và chúc bạn sẽ thành công trên con đường học tập và những lựa chọn sắp tới.`;
-                headerDesc.style.textAlign = "left";
-                headerDesc.style.fontSize = "16px";
-                headerDesc.style.lineHeight = "1.8"; /* Tuỳ chọn: Tăng khoảng cách dòng cho dễ đọc */
-
-                // 5. Cuộn trang lên trên cùng để người dùng dễ đọc lời cảm ơn
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             })
             .catch(error => {
