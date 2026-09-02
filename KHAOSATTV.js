@@ -39,7 +39,7 @@ const emailData = {
     "Ngô Trung Toàn": "tn133239@gmail.com",
     "Nguyễn Lê Bảo Yến Vy": "nlbyv2107@gmail.com",
     "Nguyễn Ngọc Tú": "ngoctu040506@gmail.com",
-    
+
     "Trần Minh Đăng": "minhdang875425@gmail.com",
     "Vũ Đình Phi": "vudinhphee@gmail.com",
     "Đàm Thị Ngọc Châu": "damthingocchau26@gmail.com",
@@ -219,7 +219,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 headerTitle.style.textAlign = "center";
                 headerDesc.innerHTML = `
                     <div style="font-size: 16px; line-height: 1.6;">
-                        Ban chủ nhiệm Google Developer Group on Campus - Saigon xin trân trọng cảm ơn bạn
+                        Ban chủ nhiệm Google Developer Groups on Campus - SaiGon University xin trân trọng cảm ơn bạn
                         <br><br>
                         <span style="text-align: center; font-size: 24px; color: #EA4335; font-weight: bold; text-transform: uppercase;">${userName}</span>
                         <br>
