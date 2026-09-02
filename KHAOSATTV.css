@@ -249,23 +249,16 @@ input[type="text"].has-data:focus, input[type="email"].has-data:focus, textarea.
 
 
 .confirm-alert {
-    background-color: #fce8e6; /* Đỏ nhạt Google */
-    color: #d93025; /* Đỏ đậm Google */
-    border: 1px solid #fad2cf;
-    padding: 15px 20px;
+    background-color: #fcf8e6;
+    color: #ecc76a; /* Đỏ đậm Google */
+    border: 1px solid #faf3cf;
     border-radius: 8px;
     margin-bottom: 25px;
-    font-size: 15px;
-    line-height: 1.6;
+    padding: 15px 15px;
+    font-size: 20px;
     text-align: center;
-    display: none; /* Ẩn mặc định, chỉ hiện khi được gọi bằng JS */
+    display: none;
     animation: slideDown 0.4s ease-out;
-}
-
-.confirm-alert strong {
-    font-size: 17px;
-    display: block;
-    margin-bottom: 5px;
 }
 
 .submit-btn.confirm-mode {
@@ -304,5 +297,9 @@ input[type="text"].has-data:focus, input[type="email"].has-data:focus, textarea.
         flex-direction: column;
         align-items: flex-start;
         gap: 10px;
+    }
+
+    .confirm-alert {
+        font-size: 15px;
     }
 }
