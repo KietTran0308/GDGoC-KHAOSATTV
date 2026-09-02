@@ -140,11 +140,10 @@ document.addEventListener("DOMContentLoaded", function () {
     form.addEventListener("submit", function (e) {
         e.preventDefault();
 
-        const selectedName = nameSelect.value;
         const enteredEmail = emailInput.value.trim();
 
-        if (emailData[selectedName] && enteredEmail !== emailData[selectedName] && selectedName !== "Huỳnh Hoàng Phong") {
-            emailError.textContent = 'Email không khớp với tên "${selectedName}". Vui lòng nhập lại.';
+        if (emailData[nameSelect] && enteredEmail !== emailData[nameSelect] && nameSelect !== "Huỳnh Hoàng Phong") {
+            emailError.textContent = 'Email không khớp với tên "${nameSelect}". Vui lòng nhập lại.';
             emailError.style.display = "block";
             emailInput.style.borderColor = "#d93025";
 
