@@ -93,8 +93,55 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const scriptURL = 'https://script.google.com/macros/s/AKfycbxMiEHrVcuRwSIQWoFamr-iQdDa5W090mIl5G635Y9WH_PDHzw6hB-UheHMC2AzXuwS1Q/exec';
 
+    let isConfirmed = false;
+
+    function resetConfirmation() {
+        if (isConfirmed) {
+            isConfirmed = false;
+            const confirmAlert = document.getElementById("confirmAlert");
+            if (confirmAlert) confirmAlert.style.display = "none";
+            submitBtn.textContent = "Gửi khảo sát";
+            submitBtn.classList.remove("confirm-mode");
+            submitBtn.disabled = false;
+        }
+    }
+
+    form.addEventListener("input", resetConfirmation);
+    form.addEventListener("change", resetConfirmation);
+    banButtons.forEach(btn => btn.addEventListener("click", resetConfirmation));
+
     form.addEventListener("submit", function (e) {
         e.preventDefault();
+
+        if (!isConfirmed) {
+            isConfirmed = true;
+
+            let confirmAlert = document.getElementById("confirmAlert");
+            if (!confirmAlert) {
+                confirmAlert = document.createElement("div");
+                confirmAlert.id = "confirmAlert";
+                confirmAlert.className = "confirm-alert";
+                confirmAlert.innerHTML = `
+                    <strong>Hãy kiểm tra lại thông tin một lần nữa</strong><br>
+                `;
+                // Chèn ngay dưới phần tiêu đề form
+                const formHeader = document.querySelector(".form-header");
+                formHeader.insertAdjacentElement("afterend", confirmAlert);
+            }
+
+            confirmAlert.style.display = "block";
+
+            submitBtn.textContent = "Xác nhận gửi";
+            submitBtn.classList.add("confirm-mode");
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            return;
+        }
+
+        // NẾU ĐÃ BẤM XÁC NHẬN -> BƯỚC 2: Bắt đầu gửi dữ liệu
+        const confirmAlert = document.getElementById("confirmAlert");
+        if (confirmAlert) confirmAlert.style.display = "none";
 
         const nameSelectElement = document.getElementById("name");
         const userName = nameSelectElement.options[nameSelectElement.selectedIndex].text;
@@ -108,12 +155,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const allFields = ['selectedBan', 'name', 'improvement', 'decision', 'support', 'leave_reason', 'feedback'];
         allFields.forEach(field => {
             if (!formData.has(field) || formData.get(field).trim() === "") {
-                formData.delete(field); 
+                formData.delete(field);
                 formData.append(field, "Không có");
             }
         });
 
-        // Gửi dữ liệu qua Google Sheets
         fetch(scriptURL, { method: 'POST', body: formData })
             .then(response => {
                 form.style.display = "none";
@@ -145,6 +191,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 alert("Đã xảy ra lỗi trong quá trình gửi, vui lòng thử lại sau!");
                 submitBtn.textContent = "Gửi khảo sát";
                 submitBtn.disabled = false;
+                isConfirmed = false; // Bị lỗi thì trả về trạng thái ban đầu
+                submitBtn.classList.remove("confirm-mode");
             });
     });
 });

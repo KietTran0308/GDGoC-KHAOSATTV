@@ -247,6 +247,40 @@ input[type="text"].has-data:focus, textarea.has-data:focus, select.has-data:focu
     letter-spacing: 0.3px;
 }
 
+
+.confirm-alert {
+    background-color: #fce8e6; /* Đỏ nhạt Google */
+    color: #d93025; /* Đỏ đậm Google */
+    border: 1px solid #fad2cf;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    font-size: 15px;
+    line-height: 1.6;
+    text-align: center;
+    display: none; /* Ẩn mặc định, chỉ hiện khi được gọi bằng JS */
+    animation: slideDown 0.4s ease-out;
+}
+
+.confirm-alert strong {
+    font-size: 17px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.submit-btn.confirm-mode {
+    background-color: #34A853;
+}
+
+.submit-btn.confirm-mode:hover {
+    background-color: #2b8c45;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 /* =======================================================
    RESPONSIVE THIẾT BỊ DI ĐỘNG (Điện thoại, Tablet nhỏ)
    ======================================================= */
