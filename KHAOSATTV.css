@@ -104,7 +104,7 @@ body {
     font-weight: 500;
 }
 
-input[type="text"], textarea, select {
+input[type="text"], input[type="email"], textarea, select {
     width: 100%;
     padding: 12px 25px;
     border: 1px solid #ccc;
@@ -142,13 +142,13 @@ select option[value=""] {
     font-style: italic;
 }
 
-input[type="text"]:focus, textarea:focus,
+input[type="text"]:focus, input[type="email"]:focus, textarea:focus,
 select:focus {
     border-color: #4285F4;
     outline: none;
 }
 
-input[type="text"].has-data, textarea.has-data, select.has-data {
+input[type="text"].has-data, input[type="email"].has-data, textarea.has-data, select.has-data {
     border: 2px solid #1a73e8;
     font-weight: 500;
 }
@@ -157,7 +157,7 @@ select.has-data{
     color: #1a73e8;
 }
 
-input[type="text"].has-data:focus, textarea.has-data:focus, select.has-data:focus {
+input[type="text"].has-data:focus, input[type="email"].has-data:focus, textarea.has-data:focus, select.has-data:focus {
     border-color: #4285F4;
 }
 

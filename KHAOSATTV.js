@@ -99,14 +99,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     decisionRadios.forEach(radio => {
         radio.addEventListener("change", function () {
-            if (this.value === "Continue") {
+            if (this.value === "Tiếp tục") {
                 continueSection.style.display = "block";
                 leaveSection.style.display = "none";
 
                 continueSection.querySelectorAll('input[type="radio"]').forEach(input => input.setAttribute("required", "true"));
                 leaveSection.querySelectorAll('textarea').forEach(input => input.removeAttribute("required"));
 
-            } else if (this.value === "Leave") {
+            } else if (this.value === "Rời đi") {
                 leaveSection.style.display = "block";
                 continueSection.style.display = "none";
 
@@ -140,10 +140,11 @@ document.addEventListener("DOMContentLoaded", function () {
     form.addEventListener("submit", function (e) {
         e.preventDefault();
 
+        const selectedName = nameSelect.value;
         const enteredEmail = emailInput.value.trim();
 
-        if (emailData[nameSelect] && enteredEmail !== emailData[nameSelect] && nameSelect !== "Huỳnh Hoàng Phong") {
-            emailError.textContent = 'Email không khớp với tên "${nameSelect}". Vui lòng nhập lại.';
+        if (emailData[selectedName] && enteredEmail !== emailData[selectedName] && selectedName !== "Huỳnh Hoàng Phong") {
+            emailError.textContent = `Email không khớp với tên "${selectedName}". Vui lòng nhập lại.`;
             emailError.style.display = "block";
             emailInput.style.borderColor = "#d93025";
 
