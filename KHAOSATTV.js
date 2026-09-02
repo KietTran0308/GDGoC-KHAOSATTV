@@ -185,11 +185,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const formData = new FormData(form);
 
-        const allFields = ['selectedBan', 'name', 'email', 'improvement', 'decision', 'support', 'leave_reason', 'feedback'];
+        const allFields = ['selectedBan', 'name', 'email', 'improvement', 'decision', 'continue_plan', 'support', 'leave_reason'];
         allFields.forEach(field => {
             if (!formData.has(field) || formData.get(field).trim() === "") {
                 formData.delete(field);
-                formData.append(field, "Không có");
+                formData.append(field, "");
             }
         });
 
