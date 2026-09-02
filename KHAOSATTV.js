@@ -219,7 +219,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 headerTitle.style.textAlign = "center";
                 headerDesc.innerHTML = `
                     <div style="font-size: 16px; line-height: 1.6;">
-                        Ban chủ nhiệm Google Developer Groups on Campus - SaiGon University xin trân trọng cảm ơn bạn
+                        Ban chủ nhiệm Google Developer Groups on Campus - Saigon University xin trân trọng cảm ơn bạn
                         <br><br>
                         <span style="text-align: center; font-size: 24px; color: #EA4335; font-weight: bold; text-transform: uppercase;">${userName}</span>
                         <br>
