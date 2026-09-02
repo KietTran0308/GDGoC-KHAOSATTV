@@ -227,7 +227,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         <br><br>
                         đã dành thời gian hoàn thành khảo sát.
                         <br><br>
-                        Dù là lựa chọn nào đi chăng nữa, ban chủ nhiệm GDGoC SGU xin chân thành cảm ơn và chúc bạn sẽ thành công trên con đường học tập và những lựa chọn sắp tới ❤️.
+                        Dù là lựa chọn nào đi chăng nữa, Ban chủ nhiệm GDGoC SGU xin chân thành cảm ơn và chúc bạn sẽ thành công trên con đường học tập và những lựa chọn sắp tới ❤️.
                     </div>
                 `;
 
