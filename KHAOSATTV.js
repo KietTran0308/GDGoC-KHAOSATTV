@@ -106,12 +106,23 @@ document.addEventListener("DOMContentLoaded", function () {
                 continueSection.querySelectorAll('input[type="radio"]').forEach(input => input.setAttribute("required", "true"));
                 leaveSection.querySelectorAll('textarea').forEach(input => input.removeAttribute("required"));
 
+                leaveSection.querySelectorAll('textarea').forEach(input => {
+                    input.value = ""; // Xoá text
+                    input.classList.remove("has-data"); // Gỡ định dạng màu
+                });
+
             } else if (this.value === "Rời đi") {
                 leaveSection.style.display = "block";
                 continueSection.style.display = "none";
-
                 leaveSection.querySelectorAll('textarea').forEach(input => input.setAttribute("required", "true"));
                 continueSection.querySelectorAll('input[type="radio"]').forEach(input => input.removeAttribute("required"));
+                continueSection.querySelectorAll('textarea').forEach(input => {
+                    input.value = "";
+                    input.classList.remove("has-data");
+                });
+                continueSection.querySelectorAll('input[type="radio"]').forEach(input => {
+                    input.checked = false;
+                });
             }
         });
     });
