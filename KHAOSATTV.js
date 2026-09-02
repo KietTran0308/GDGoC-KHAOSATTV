@@ -15,11 +15,40 @@ const membersData = {
     ]
 };
 
+const emailData = {
+    "Đặng Minh Tân": "dangminhtan0704@gmail.com",
+    "Hoàng Phú Thịnh": "hoqngphuthinh@gmail.com",
+    "Hồ Hoàng Long": "hohoanglong2508@gmail.com",
+    "Huỳnh Tấn Phi Hùng": "nhochung2018@gmail.com",
+    "Ngô Đăng Hiến": "danghienabb@gmail.com",
+    "Nguyễn Anh Thư": "nguyenanhthu290407@gmail.com",
+    "Nguyễn Hoàng Anh": "nha261105@gmail.com",
+    "Nguyễn Minh Triết": "trietnguyen0507@gmail.com",
+    "Trần Hòa Xuân Thu": "tranhoaxuanthu@gmail.com",
+    "Trần Phương Thảo": "tranphuongthao02012006@gmail.com",
+    "Võ Minh Sang": "vosang20102005@gmail.com",
+    "Nguyễn Chí Thành": "chithanh213189@gmail.com",
+    "Nguyễn Đức Phát": "nguyenducphat2246@gmail.com",
+    "Nguyễn Ngọc Đoan Trang": "trangdoanngocnguyen@gmail.com",
+    "Trần Tùng Dương": "duongcaptain1234@gmail.com",
+    "Trương Quốc Thái": "truongquocthai627@gmail.com",
+    "Huỳnh Hoàng Phong": "",
+    "Ngô Trung Toàn": "tn133239@gmail.com",
+    "Nguyễn Lê Bảo Yến Vy": "nlbyv2107@gmail.com",
+    "Nguyễn Ngọc Tú": "ngoctu040506@gmail.com",
+    "Trần Minh Đăng": "minhdang875425@gmail.com",
+    "Vũ Đình Phi": "vudinhphee@gmail.com",
+    "Đàm Thị Ngọc Châu": "damthingocchau26@gmail.com",
+    "Trần Giang Tuấn Kiệt": "tuankiet21950@gmail.com"
+};
+
 document.addEventListener("DOMContentLoaded", function () {
     const banButtons = document.querySelectorAll(".ban-btn");
     const nameSelect = document.getElementById("name");
     const selectedBanInput = document.getElementById("selectedBan");
-    const inputFields = document.querySelectorAll('input[type="text"], textarea, select');
+    const emailInput = document.getElementById("email");
+    const emailError = document.getElementById("emailError");
+    const inputFields = document.querySelectorAll('input[type="text"], input[type="email"], textarea, select');
 
     banButtons.forEach(button => {
         button.addEventListener("click", function () {
@@ -30,6 +59,11 @@ document.addEventListener("DOMContentLoaded", function () {
             selectedBanInput.value = selectedBan;
             nameSelect.classList.remove('has-data');
             nameSelect.innerHTML = '<option value="">-- Vui lòng chọn tên của bạn --</option>';
+
+            emailInput.value = "";
+            emailInput.classList.remove('has-data');
+            emailError.style.display = "none";
+
             const members = membersData[selectedBan];
             if (members) {
                 members.forEach(name => {
@@ -42,23 +76,20 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
+    emailInput.addEventListener("input", function() {
+        emailError.style.display = "none";
+        this.style.borderColor = "";
+    });
+
     inputFields.forEach(field => {
-        // Lắng nghe sự kiện 'input' (khi gõ chữ) và 'change' (khi chọn select)
         field.addEventListener('input', function() {
-            if (this.value.trim() !== "") {
-                this.classList.add('has-data'); // Thêm class khi có dữ liệu
-            } else {
-                this.classList.remove('has-data'); // Xóa class khi trống
-            }
+            if (this.value.trim() !== "") this.classList.add('has-data');
+            else this.classList.remove('has-data');
         });
 
-        // Bắt thêm sự kiện 'change' đặc biệt cho thẻ select
         field.addEventListener('change', function() {
-             if (this.value.trim() !== "") {
-                this.classList.add('has-data');
-            } else {
-                this.classList.remove('has-data');
-            }
+             if (this.value.trim() !== "") this.classList.add('has-data');
+            else this.classList.remove('has-data');
         });
     });
 
@@ -72,7 +103,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 continueSection.style.display = "block";
                 leaveSection.style.display = "none";
 
-                // CHỈ bắt buộc chọn nút radio (câu hỏi tham gia đợt tuyển), BỎ QUA ô textarea
                 continueSection.querySelectorAll('input[type="radio"]').forEach(input => input.setAttribute("required", "true"));
                 leaveSection.querySelectorAll('textarea').forEach(input => input.removeAttribute("required"));
 
@@ -80,17 +110,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 leaveSection.style.display = "block";
                 continueSection.style.display = "none";
 
-                // Bắt buộc nhập lý do rời đi
                 leaveSection.querySelectorAll('textarea').forEach(input => input.setAttribute("required", "true"));
                 continueSection.querySelectorAll('input[type="radio"]').forEach(input => input.removeAttribute("required"));
             }
         });
     });
 
-    // ---- 3. PHẦN GỬI DỮ LIỆU (Đã được đưa vào trong DOMContentLoaded) ----
     const form = document.getElementById("gdgSurveyForm");
     const submitBtn = document.querySelector(".submit-btn");
-
     const scriptURL = 'https://script.google.com/macros/s/AKfycbxMiEHrVcuRwSIQWoFamr-iQdDa5W090mIl5G635Y9WH_PDHzw6hB-UheHMC2AzXuwS1Q/exec';
 
     let isConfirmed = false;
@@ -113,6 +140,18 @@ document.addEventListener("DOMContentLoaded", function () {
     form.addEventListener("submit", function (e) {
         e.preventDefault();
 
+        const selectedName = nameSelect.value;
+        const enteredEmail = emailInput.value.trim();
+
+        if (emailData[selectedName] && enteredEmail !== emailData[selectedName] && selectedName !== "Huỳnh Hoàng Phong") {
+            emailError.textContent = 'Email không khớp với tên "${selectedName}". Vui lòng nhập lại.';
+            emailError.style.display = "block";
+            emailInput.style.borderColor = "#d93025";
+
+            emailInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            return;
+        }
+
         if (!isConfirmed) {
             isConfirmed = true;
 
@@ -124,27 +163,21 @@ document.addEventListener("DOMContentLoaded", function () {
                 confirmAlert.innerHTML = `
                     <strong>Hãy kiểm tra lại thông tin một lần nữa</strong><br>
                 `;
-                // Chèn ngay dưới phần tiêu đề form
                 const formHeader = document.querySelector(".form-header");
                 formHeader.insertAdjacentElement("afterend", confirmAlert);
             }
 
             confirmAlert.style.display = "block";
-
             submitBtn.textContent = "Xác nhận gửi";
             submitBtn.classList.add("confirm-mode");
-
             window.scrollTo({ top: 0, behavior: 'smooth' });
-
             return;
         }
 
-        // NẾU ĐÃ BẤM XÁC NHẬN -> BƯỚC 2: Bắt đầu gửi dữ liệu
         const confirmAlert = document.getElementById("confirmAlert");
         if (confirmAlert) confirmAlert.style.display = "none";
 
-        const nameSelectElement = document.getElementById("name");
-        const userName = nameSelectElement.options[nameSelectElement.selectedIndex].text;
+        const userName = nameSelect.options[nameSelect.selectedIndex].text;
         const userBan = document.getElementById("selectedBan").value;
 
         submitBtn.textContent = "Đang xử lý...";
@@ -152,7 +185,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const formData = new FormData(form);
 
-        const allFields = ['selectedBan', 'name', 'improvement', 'decision', 'support', 'leave_reason', 'feedback'];
+        const allFields = ['selectedBan', 'name', 'email', 'improvement', 'decision', 'support', 'leave_reason', 'feedback'];
         allFields.forEach(field => {
             if (!formData.has(field) || formData.get(field).trim() === "") {
                 formData.delete(field);
@@ -163,7 +196,6 @@ document.addEventListener("DOMContentLoaded", function () {
         fetch(scriptURL, { method: 'POST', body: formData })
             .then(response => {
                 form.style.display = "none";
-
                 const headerTitle = document.querySelector(".form-header h1");
                 const headerDesc = document.querySelector(".form-header p");
 
@@ -191,7 +223,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 alert("Đã xảy ra lỗi trong quá trình gửi, vui lòng thử lại sau!");
                 submitBtn.textContent = "Gửi khảo sát";
                 submitBtn.disabled = false;
-                isConfirmed = false; // Bị lỗi thì trả về trạng thái ban đầu
+                isConfirmed = false;
                 submitBtn.classList.remove("confirm-mode");
             });
     });

@@ -44,7 +44,12 @@
                         <select id="name" name="name" required>
                             <option value="">-- Vui lòng chọn Ban trước --</option>
                         </select>
+
+                        <input type="email" id="email" name="email" placeholder="Nhập email SGU của bạn để xác thực..." style="margin-top: 15px;" required>
+                        <div id="emailError" style="color: #d93025; font-size: 13px; margin-top: 5px; display: none;"></div>
                     </div>
+
+
 
                     <div class="form-group">
                         <h2>Theo bạn, CLB cần cải thiện những điều gì trong kì hoạt động sắp tới (ví dụ: cách làm việc, quy trình, giao tiếp giữa các thành viên,...)?</h2>
@@ -56,8 +61,8 @@
                     <div class="form-group">
                         <h2 class="required">Bạn mong muốn tiếp tục đồng hành cùng GDGoC SGU trong chặng đường sắp tới hay phải khép lại hành trình tại thời điểm này:</h2>
                         <div class="radio-group">
-                            <label><input type="radio" name="decision" value="Continue" required> Tiếp tục đồng hành cùng CLB</label>
-                            <label><input type="radio" name="decision" value="Leave"> Tạm dừng/Rời CLB</label>
+                            <label><input type="radio" name="decision" value="Tiếp tục" required> Tiếp tục đồng hành cùng CLB</label>
+                            <label><input type="radio" name="decision" value="Tạm dừng"> Tạm dừng/Rời CLB</label>
                         </div>
                     </div>
 
@@ -71,8 +76,8 @@
                         <div class="form-group">
                             <h2 class="required">Dự kiến đợt tuyển thành viên tiếp theo sẽ rơi vào cuối tháng 9, bạn sẽ sắp xếp tham gia hỗ trợ ?</h2>
                             <div class="radio-group">
-                                <label><input type="radio" name="support" value="yes"> Chắc chắn có</label>
-                                <label><input type="radio" name="support" value="consider"> Cân nhắc</label>
+                                <label><input type="radio" name="support" value="Có"> Chắc chắn có</label>
+                                <label><input type="radio" name="support" value="Cân nhắc"> Cân nhắc</label>
                             </div>
                         </div>
                     </div>
